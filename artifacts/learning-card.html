@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body{font-family:'Inter','Segoe UI','Helvetica Neue',sans-serif;color:#333;margin:0;background:#f8f9fa;padding:32px;}
+  .doc{max-width:760px;margin:0 auto;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.08);border-radius:10px;overflow:hidden;}
+  .banner{background:#6d4fff;padding:22px 28px;color:#fff;}
+  .kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}
+  .title{font-size:22px;font-weight:600;margin-top:4px;}
+  .body{padding:26px 28px;}
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px;}
+  .meta-card{background:#f9f8ff;border:1px solid #ece8ff;border-radius:8px;padding:12px 14px;}
+  .meta-label{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#8a83b0;margin-bottom:4px;}
+  .meta-val{font-size:14px;font-weight:600;color:#333;}
+  .result-row{display:flex;gap:10px;margin-bottom:24px;}
+  .result{flex:1;text-align:center;border-radius:8px;padding:12px;font-size:13px;font-weight:700;border:1.5px solid transparent;}
+  .r-success{background:#e8f7ed;color:#2e7d52;border-color:#9ad9b4;}
+  .r-inconclusive{background:#f7f7f7;color:#999;}
+  .r-failed{background:#fff0ed;color:#c43e1c;}
+  .field{margin-bottom:22px;}
+  .field-title{font-size:14px;font-weight:700;color:#6d4fff;display:flex;align-items:center;margin:0 0 8px;}
+  .field-title::after{content:"";flex-grow:1;height:1px;background:#ece8ff;margin-left:14px;}
+  .field-hint{font-size:13.5px;line-height:1.55;color:#555;}
+  .footer{border-top:1px solid #eee;padding:14px 28px;font-size:11px;color:#aaa;text-align:center;}
+</style>
+</head>
+<body>
+  <div class="doc">
+    <div class="banner">
+      <div class="kicker">Experimentation Program · Post-Test Synthesis</div>
+      <div class="title">Learning Card</div>
+    </div>
+    <div class="body">
+      <div class="meta">
+        <div class="meta-card"><div class="meta-label">Assigned to</div><div class="meta-val">Lead PM(s)</div></div>
+        <div class="meta-card"><div class="meta-label">Run dates</div><div class="meta-val">Start – End</div></div>
+        <div class="meta-card"><div class="meta-label">Actual duration</div><div class="meta-val">Days live</div></div>
+      </div>
+      <div class="result-row">
+        <div class="result r-success">SUCCESSFUL</div>
+        <div class="result r-inconclusive">INCONCLUSIVE</div>
+        <div class="result r-failed">FAILED</div>
+      </div>
+      <div class="field">
+        <div class="field-title">Insights / Results</div>
+        <div class="field-hint">What the data showed against the hypothesis — primary KPI movement, statistical confidence, and the behavioral read on why.</div>
+      </div>
+      <div class="field">
+        <div class="field-title">Next steps</div>
+        <div class="field-hint">Roll out, iterate, or kill — and the follow-on hypotheses this test opened up.</div>
+      </div>
+      <div class="field">
+        <div class="field-title">Test link</div>
+        <div class="field-hint">Link to the experiment in GrowthBook and the originating Test Card.</div>
+      </div>
+    </div>
+    <div class="footer">Confidential · Embroker Product Growth · Learning Card template</div>
+  </div>
+</body>
+</html>

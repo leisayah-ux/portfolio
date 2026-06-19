@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI-Augmented PM Operating Model</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #faf8f5;
+    color: #2a2a2a;
+    padding: 48px 32px;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: #6b6b6b;
+    margin-bottom: 48px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .workflow {
+    background: white;
+    border: 1px solid #e5e1d8;
+    border-radius: 12px;
+    padding: 28px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .workflow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .workflow-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .workflow-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: #f0ebe1;
+    color: #8b6f47;
+  }
+  .workflow-tag.intake { background: #e8eef0; color: #4a6873; }
+  .workflow-tag.feedback { background: #f0e8ee; color: #735069; }
+  .workflow-tag.vision { background: #e8f0eb; color: #4a7359; }
+  .workflow-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: #1a1a1a;
+  }
+  .gap {
+    font-size: 13px;
+    color: #8a7a5e;
+    font-style: italic;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0ebe1;
+  }
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #3a3a3a;
+  }
+  .step-number {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .tool {
+    display: inline-block;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 11px;
+    background: #f5f1e8;
+    color: #6b5840;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin: 0 2px;
+  }
+  .status {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #f0ebe1;
+    font-size: 12px;
+    color: #8a7a5e;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #7ba070;
+  }
+  .status-dot.partial { background: #d4a85a; }
+  .legend {
+    margin-top: 40px;
+    padding: 20px 24px;
+    background: white;
+    border: 1px solid #e5e1d8;
+    border-radius: 12px;
+    font-size: 13px;
+    color: #5a5a5a;
+    line-height: 1.6;
+  }
+  .legend strong { color: #1a1a1a; }
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+    body { padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>An AI-Augmented PM Operating Model</h1>
+  <p class="subtitle">Four workflows I've designed to address specific gaps in our PM lifecycle. Each one was tested on my own work first, with the intent to scale across the team.</p>
+
+  <div class="grid">
+
+    <!-- Workflow 1 -->
+    <div class="workflow">
+      <div class="workflow-header">
+        <span class="workflow-tag">Design + Execution</span>
+      </div>
+      <div class="workflow-title">End-to-End PM Lifecycle</div>
+      <div class="gap">Gap: Lean PM capacity, limited design support — contained requests take a week to document and design.</div>
+      <div class="flow">
+        <div class="step"><div class="step-number">1</div><div>Stakeholder meeting → prototype the component live with <span class="tool">Figma Make</span></div></div>
+        <div class="step"><div class="step-number">2</div><div>Feed meeting transcript to <span class="tool">Rovo</span> → draft epic and stories</div></div>
+        <div class="step"><div class="step-number">3</div><div>Refine prototype in <span class="tool">Figma Make</span> using our design system → variants per touchpoint</div></div>
+        <div class="step"><div class="step-number">4</div><div>Import to <span class="tool">Figma</span>, tweak → feed designs back to <span class="tool">Rovo</span> to refine stories</div></div>
+        <div class="step"><div class="step-number">5</div><div>Assess fit for engineering's auto-build agent for expedited execution</div></div>
+      </div>
+      <div class="status"><div class="status-dot"></div>Proven on a real request (cyber incident process): a few hours, ready for grooming in less than a day</div>
+    </div>
+
+    <!-- Workflow 2 -->
+    <div class="workflow">
+      <div class="workflow-header">
+        <span class="workflow-tag intake">Bug Intake</span>
+      </div>
+      <div class="workflow-title">Triage &amp; Assignment Agent</div>
+      <div class="gap">Gap: Lean team struggles to triage bugs, prioritize, and close the loop with stakeholders.</div>
+      <div class="flow">
+        <div class="step"><div class="step-number">1</div><div>Daily <span class="tool">Rovo</span> agent surfaces: new bugs (last 24h), tickets with new comments, aged high/medium bugs in flight</div></div>
+        <div class="step"><div class="step-number">2</div><div><em>(In progress)</em> Auto-assignment agent: routes bugs to the right PM based on content</div></div>
+        <div class="step"><div class="step-number">3</div><div><em>(In progress)</em> Duplicate detection via <span class="tool">Rovo</span> + priority pre-scoring (PM reviews)</div></div>
+        <div class="step"><div class="step-number">4</div><div><em>(Planned)</em> Hand-off to engineering's spike/auto-build agent for straightforward fixes</div></div>
+      </div>
+      <div class="status"><div class="status-dot partial"></div>Triage agent live; assignment + duplicate detection in build</div>
+    </div>
+
+    <!-- Workflow 3 -->
+    <div class="workflow">
+      <div class="workflow-header">
+        <span class="workflow-tag feedback">Voice of Customer</span>
+      </div>
+      <div class="workflow-title">Consolidated Feedback Synthesis</div>
+      <div class="gap">Gap: Customer signal lives across Salesforce, Slack, chatbots, and NPS — rarely synthesized into something usable.</div>
+      <div class="flow">
+        <div class="step"><div class="step-number">1</div><div>Partner with data science to ingest all VoC channels into a unified dashboard</div></div>
+        <div class="step"><div class="step-number">2</div><div>Model surfaces themes across sources → quantifies frequency and severity</div></div>
+        <div class="step"><div class="step-number">3</div><div>Cross-reference with <span class="tool">Hotjar</span> behavioral metadata + <span class="tool">Heap</span> funnel data</div></div>
+        <div class="step"><div class="step-number">4</div><div>Themes feed prioritization, ideation, and funnel gap analysis</div></div>
+      </div>
+      <div class="status"><div class="status-dot partial"></div>Dashboard in build with data science partnership</div>
+    </div>
+
+    <!-- Workflow 4 -->
+    <div class="workflow">
+      <div class="workflow-header">
+        <span class="workflow-tag vision">Strategy + Vision</span>
+      </div>
+      <div class="workflow-title">AI-Augmented Product Vision</div>
+      <div class="gap">Gap: Strategic and vision work gets deprioritized when PM capacity is tight.</div>
+      <div class="flow">
+        <div class="step"><div class="step-number">1</div><div>Feed the idea, target metrics, jobs-to-be-done, and rationale into AI</div></div>
+        <div class="step"><div class="step-number">2</div><div>Use AI as a sparring partner: refine business case, stress-test the idea, surface weaknesses</div></div>
+        <div class="step"><div class="step-number">3</div><div>Benchmark via custom competitive analysis skill (<span class="tool">Claude</span>, biweekly report)</div></div>
+        <div class="step"><div class="step-number">4</div><div>Generate design variations with <span class="tool">Claude Design</span> → select direction</div></div>
+        <div class="step"><div class="step-number">5</div><div>Refine into prototype with <span class="tool">Claude Code</span> → share with engineering and stakeholders</div></div>
+      </div>
+      <div class="status"><div class="status-dot"></div>Actively used for a current vision project</div>
+    </div>
+
+  </div>
+
+  <div class="legend">
+    <strong>How to read this:</strong> Each workflow addresses a specific gap I identified in our PM lifecycle. I test on my own work first, then scale patterns that work to the team. The point isn't tool adoption — it's redesigning <em>how</em> PM work gets done so capacity gets returned to the work that requires human judgment: strategy, prioritization, and stakeholder dynamics.
+  </div>
+</div>
+</body>
+</html>

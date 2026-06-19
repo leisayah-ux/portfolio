@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leila Sayah Sparks — Brand Identity System v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C1C1A;
+    --paper: #FAFAF7;
+    --white: #FFFFFF;
+    --slate: #3D3D3A;
+    --mid: #888880;
+    --rule: #E8E8E2;
+
+    --forest: #2D4A3E;
+    --forest-light: #3D6B5A;
+    --forest-ghost: #EBF0EE;
+    --forest-mid: #C5D5CF;
+
+    --bold-section: #1E2D28;
+
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--paper);
+    padding: 80px 64px 64px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .header-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 28px;
+  }
+
+  .header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .header h1 em {
+    font-style: normal;
+    color: var(--forest);
+  }
+
+  .header-sub {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--mid);
+    max-width: 420px;
+    line-height: 1.65;
+  }
+
+  .header-pill {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid var(--forest);
+    color: var(--forest);
+    padding: 5px 12px;
+    margin-top: 32px;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+
+  section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── PERSONALITY ── */
+  .personality-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .personality-card {
+    background: var(--white);
+    padding: 32px 24px;
+    border: 1px solid var(--rule);
+  }
+
+  .personality-card:first-child {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: var(--white);
+  }
+
+  .personality-word {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+
+  .personality-card:first-child .personality-word {
+    color: var(--white);
+  }
+
+  .personality-desc {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--mid);
+    font-weight: 300;
+  }
+
+  .personality-card:first-child .personality-desc {
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ── COLOR ── */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+
+  .swatch {
+    aspect-ratio: 1;
+    position: relative;
+  }
+
+  .swatch-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 10px 12px 12px;
+    background: linear-gradient(to top, rgba(0,0,0,0.35), transparent);
+  }
+
+  .swatch-name {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    display: block;
+  }
+
+  .swatch-hex {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .swatch-light .swatch-info {
+    background: linear-gradient(to top, rgba(0,0,0,0.12), transparent);
+  }
+
+  .swatch-light .swatch-name { color: rgba(0,0,0,0.6); }
+  .swatch-light .swatch-hex { color: rgba(0,0,0,0.35); }
+
+  .palette-note {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .palette-note-item {}
+  .palette-note-role {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+
+  .palette-note-desc {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .type-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: start;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .type-row:last-child { border-bottom: none; }
+
+  .type-role {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 8px;
+  }
+
+  .type-spec {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.9;
+    font-weight: 300;
+  }
+
+  .type-spec strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .type-sample-display {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    color: var(--ink);
+  }
+
+  .type-sample-display span {
+    color: var(--forest);
+  }
+
+  .type-sample-body {
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--slate);
+    max-width: 520px;
+  }
+
+  .type-sample-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .type-sample-label.accent {
+    color: var(--forest);
+  }
+
+  /* ── BOLD SECTION DEMO ── */
+  .bold-section-demo {
+    background: var(--bold-section);
+    padding: 64px;
+    margin: 0 -64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .bold-section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin-bottom: 24px;
+  }
+
+  .bold-section-headline {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .bold-section-body {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.45);
+    max-width: 340px;
+  }
+
+  .bold-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .bold-metric {
+    background: rgba(255,255,255,0.04);
+    padding: 28px 24px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .bold-metric-val {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .bold-metric-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ── PRINCIPLES ── */
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .principle-card {
+    background: var(--white);
+    padding: 36px 32px;
+    border: 1px solid var(--rule);
+  }
+
+  .principle-card.accent {
+    background: var(--forest-ghost);
+    border-color: var(--forest-mid);
+  }
+
+  .principle-number {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--mid);
+    margin-bottom: 16px;
+  }
+
+  .principle-card.accent .principle-number {
+    color: var(--forest);
+  }
+
+  .principle-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .principle-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--mid);
+    font-weight: 300;
+  }
+
+  .principle-card.wide {
+    grid-column: span 2;
+  }
+
+  /* ── COMPONENT PREVIEWS ── */
+  .preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .preview-card {
+    background: var(--white);
+    padding: 40px 36px;
+    border: 1px solid var(--rule);
+  }
+
+  .preview-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: var(--forest-ghost);
+    color: var(--forest);
+    padding: 5px 10px;
+    margin-bottom: 22px;
+  }
+
+  .preview-headline {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+
+  .preview-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--mid);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .preview-metrics {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 28px;
+  }
+
+  .metric-val {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--forest);
+    line-height: 1;
+  }
+
+  .metric-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 4px;
+  }
+
+  .preview-btn {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 11px 22px;
+    background: var(--forest);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+  }
+
+  .preview-btn.ghost {
+    background: transparent;
+    color: var(--forest);
+    border: 1px solid var(--forest);
+  }
+
+  /* ── NAV PREVIEW ── */
+  .nav-preview {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 20px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .nav-logo span { color: var(--forest); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links li {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--mid);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links li.active {
+    color: var(--ink);
+  }
+
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--forest);
+    border: 1px solid var(--forest);
+    padding: 7px 14px;
+  }
+
+  /* ── AVOID ── */
+  .avoid-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .avoid-item {
+    border: 1px solid var(--rule);
+    padding: 20px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--white);
+  }
+
+  .avoid-x {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: #B85C3A;
+    flex-shrink: 0;
+  }
+
+  .avoid-text {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--slate);
+    font-weight: 300;
+  }
+
+  /* ── SPACING ── */
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 14px;
+  }
+
+  .spacing-bar {
+    background: var(--forest);
+    height: 6px;
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+
+  .spacing-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--mid);
+    white-space: nowrap;
+    min-width: 140px;
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 24px; }
+    .header { padding: 48px 24px 48px; }
+    .personality-grid { grid-template-columns: 1fr 1fr; }
+    .palette-grid { grid-template-columns: repeat(4, 1fr); }
+    .palette-note { grid-template-columns: 1fr; }
+    .type-row { grid-template-columns: 1fr; gap: 16px; }
+    .bold-section-demo { grid-template-columns: 1fr; padding: 48px 24px; margin: 0 -24px; }
+    .principles-grid { grid-template-columns: 1fr; }
+    .principle-card.wide { grid-column: span 1; }
+    .avoid-grid { grid-template-columns: 1fr; }
+    .preview-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-label">Brand Identity System — v2.0</div>
+  <h1>Leila<br>Sayah<em>.</em></h1>
+  <p class="header-sub">A light, structured identity system with one deliberate moment of depth. Built for a product leader who needs to be read fast and remembered.</p>
+  <div class="header-pill">Forest / Olive — Accent Direction</div>
+</div>
+
+<div class="container">
+
+  <!-- PERSONALITY -->
+  <section>
+    <div class="section-label">01 — Personality</div>
+    <div class="personality-grid">
+      <div class="personality-card">
+        <div class="personality-word">Authoritative</div>
+        <div class="personality-desc">This person knows what they're doing. The work speaks before they do.</div>
+      </div>
+      <div class="personality-card">
+        <div class="personality-word">Precise</div>
+        <div class="personality-desc">Nothing is accidental. Every choice has a reason behind it.</div>
+      </div>
+      <div class="personality-card">
+        <div class="personality-word">Direct</div>
+        <div class="personality-desc">No fluff. No decoration for decoration's sake. Gets to the point.</div>
+      </div>
+      <div class="personality-card">
+        <div class="personality-word">Considered</div>
+        <div class="personality-desc">Not cold. Warm underneath the structure — human, but never vague.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOR -->
+  <section>
+    <div class="section-label">02 — Color Palette</div>
+    <div class="palette-grid">
+      <div class="swatch" style="background:#2D4A3E;">
+        <div class="swatch-info">
+          <span class="swatch-name">Forest</span>
+          <span class="swatch-hex">#2D4A3E</span>
+        </div>
+      </div>
+      <div class="swatch" style="background:#3D6B5A;">
+        <div class="swatch-info">
+          <span class="swatch-name">Grove</span>
+          <span class="swatch-hex">#3D6B5A</span>
+        </div>
+      </div>
+      <div class="swatch swatch-light" style="background:#C5D5CF;">
+        <div class="swatch-info">
+          <span class="swatch-name">Mist</span>
+          <span class="swatch-hex">#C5D5CF</span>
+        </div>
+      </div>
+      <div class="swatch swatch-light" style="background:#EBF0EE;">
+        <div class="swatch-info">
+          <span class="swatch-name">Fern</span>
+          <span class="swatch-hex">#EBF0EE</span>
+        </div>
+      </div>
+      <div class="swatch swatch-light" style="background:#1C1C1A;">
+        <div class="swatch-info" style="background: linear-gradient(to top, rgba(255,255,255,0.15), transparent);">
+          <span class="swatch-name" style="color:rgba(255,255,255,0.8);">Ink</span>
+          <span class="swatch-hex" style="color:rgba(255,255,255,0.4);">#1C1C1A</span>
+        </div>
+      </div>
+      <div class="swatch swatch-light" style="background:#FAFAF7; border: 1px solid #E8E8E2;">
+        <div class="swatch-info">
+          <span class="swatch-name">Paper</span>
+          <span class="swatch-hex">#FAFAF7</span>
+        </div>
+      </div>
+      <div class="swatch swatch-light" style="background:#FFFFFF; border: 1px solid #E8E8E2;">
+        <div class="swatch-info">
+          <span class="swatch-name">White</span>
+          <span class="swatch-hex">#FFFFFF</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="palette-note">
+      <div class="palette-note-item">
+        <div class="palette-note-role">Dominant</div>
+        <div class="palette-note-desc">Paper + White as the base. Light, open, readable. The site breathes.</div>
+      </div>
+      <div class="palette-note-item">
+        <div class="palette-note-role">Accent — Forest</div>
+        <div class="palette-note-desc">Used for metrics, tags, CTAs, hover states, and the one bold section. Nowhere else.</div>
+      </div>
+      <div class="palette-note-item">
+        <div class="palette-note-role">The Bold Moment</div>
+        <div class="palette-note-desc">One section — likely About or a featured case study — goes deep forest-dark. Everything else stays light.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section>
+    <div class="section-label">03 — Typography</div>
+
+    <div class="type-row">
+      <div>
+        <div class="type-role">Display / Hero</div>
+        <div class="type-spec">
+          <strong>Syne</strong><br>
+          Weight: 800<br>
+          Size: 48–80px<br>
+          Tracking: −0.03em<br>
+          Leading: 0.95
+        </div>
+      </div>
+      <div class="type-sample-display">
+        Structured.<br><span>Precise.</span><br>Delivered.
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div>
+        <div class="type-role">Body / Case Study</div>
+        <div class="type-spec">
+          <strong>DM Sans</strong><br>
+          Weight: 300<br>
+          Size: 15–17px<br>
+          Leading: 1.7
+        </div>
+      </div>
+      <div class="type-sample-body">
+        I build products that move metrics and teams that sustain the momentum. Eight years across regulated environments, experimentation programs, and distributed squads — all of it in service of work that actually ships and outcomes that hold.
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div>
+        <div class="type-role">Labels / Metadata</div>
+        <div class="type-spec">
+          <strong>DM Mono</strong><br>
+          Weight: 400<br>
+          Size: 9–11px<br>
+          Tracking: 0.18em<br>
+          Uppercase
+        </div>
+      </div>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center; padding-top: 8px;">
+        <span class="type-sample-label accent">Case Study — 01</span>
+        <span class="type-sample-label">Embroker Insurance</span>
+        <span class="type-sample-label accent">Growth & CRO</span>
+        <span class="type-sample-label">2023 – Present</span>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div>
+        <div class="type-role">UI / Navigation</div>
+        <div class="type-spec">
+          <strong>DM Sans</strong><br>
+          Weight: 500<br>
+          Size: 13px<br>
+          Tracking: 0.02em
+        </div>
+      </div>
+      <div style="display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
+        <span style="font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--ink);">Work</span>
+        <span style="font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--mid);">About</span>
+        <span style="font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--mid);">Contact</span>
+        <span style="font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--forest);">View Case Study →</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE BOLD MOMENT -->
+  <section style="padding-bottom: 0; border-bottom: none;">
+    <div class="section-label">04 — The Bold Moment</div>
+    <p style="font-size: 13px; color: var(--mid); margin-bottom: 40px; max-width: 480px; font-weight: 300;">One section of the site breaks from the light base. This is where your metrics live — large, confident, impossible to miss.</p>
+  </section>
+</div>
+
+<div class="bold-section-demo">
+  <div>
+    <div class="bold-section-label">Featured Work — Embroker</div>
+    <div class="bold-section-headline">A stalled platform.<br>Realigned around<br>what actually works.</div>
+    <div class="bold-section-body">Validated and pivoted Embroker One Flow around high-value vertical personas — turning a platform rebuild into a measurable growth program across five squads.</div>
+  </div>
+  <div class="bold-metrics">
+    <div class="bold-metric">
+      <div class="bold-metric-val">+30%</div>
+      <div class="bold-metric-label">Quote submissions</div>
+    </div>
+    <div class="bold-metric">
+      <div class="bold-metric-val">+40%</div>
+      <div class="bold-metric-label">Return visitor CVR</div>
+    </div>
+    <div class="bold-metric">
+      <div class="bold-metric-val">+22%</div>
+      <div class="bold-metric-label">Funnel activation</div>
+    </div>
+    <div class="bold-metric">
+      <div class="bold-metric-val">−40h</div>
+      <div class="bold-metric-label">Manual work / month</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- COMPONENTS -->
+  <section>
+    <div class="section-label">05 — Components</div>
+
+    <!-- Nav -->
+    <div class="nav-preview">
+      <div class="nav-logo">LSS<span>.</span></div>
+      <ul class="nav-links">
+        <li class="active">Work</li>
+        <li>About</li>
+        <li>Contact</li>
+      </ul>
+      <div class="nav-cta">Get in touch</div>
+    </div>
+
+    <!-- Cards -->
+    <div class="preview-grid">
+      <div class="preview-card">
+        <span class="preview-tag">Case Study — 01</span>
+        <div class="preview-headline">Embroker One Flow Pivot</div>
+        <div class="preview-body">Realigned a stalled product strategy around vertical personas and AI-powered risk assessment — turning a platform rebuild into a measurable growth program.</div>
+        <div class="preview-metrics">
+          <div>
+            <div class="metric-val">+30%</div>
+            <div class="metric-label">Quote submissions</div>
+          </div>
+          <div>
+            <div class="metric-val">+40%</div>
+            <div class="metric-label">Return visitor CVR</div>
+          </div>
+        </div>
+        <button class="preview-btn">Read Case Study →</button>
+      </div>
+      <div class="preview-card" style="background: var(--forest-ghost); border-color: var(--forest-mid);">
+        <span class="preview-tag">Case Study — 02</span>
+        <div class="preview-headline">TELUS CRO Program</div>
+        <div class="preview-body">Built TELUS's first dedicated CRO function from scratch — defining the experimentation model, team structure, and measurement framework that became the standard.</div>
+        <div class="preview-metrics">
+          <div>
+            <div class="metric-val">+10%</div>
+            <div class="metric-label">Digital renewals</div>
+          </div>
+          <div>
+            <div class="metric-val">+40%</div>
+            <div class="metric-label">SEO traffic</div>
+          </div>
+        </div>
+        <button class="preview-btn ghost">Read Case Study →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section>
+    <div class="section-label">06 — Design Principles</div>
+    <div class="principles-grid">
+      <div class="principle-card accent">
+        <div class="principle-number">01</div>
+        <div class="principle-name">Light base, one moment of weight</div>
+        <div class="principle-desc">The site stays open and readable. One section — the bold dark panel — earns all the visual gravity. Contrast only works when it's earned.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-number">02</div>
+        <div class="principle-name">Forest as punctuation, not wallpaper</div>
+        <div class="principle-desc">The accent appears on metrics, tags, CTAs, and active states. Nowhere decorative. Its restraint is what gives it power when it shows up.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-number">03</div>
+        <div class="principle-name">Numbers are the headline</div>
+        <div class="principle-desc">+40% return visitor conversion. +30% quote submissions. These are your proof points — large, early, impossible to scroll past.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-number">04</div>
+        <div class="principle-name">Earn every scroll</div>
+        <div class="principle-desc">Recruiters scan in 30 seconds. Hiring managers go deep. Every section needs a strong headline for the scan and substance for the read.</div>
+      </div>
+      <div class="principle-card wide">
+        <div class="principle-number">05</div>
+        <div class="principle-name">Space is confidence</div>
+        <div class="principle-desc">Crowding signals insecurity. Generous whitespace signals someone who doesn't need to prove everything at once. Let the work breathe — it's strong enough.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPACING -->
+  <section>
+    <div class="section-label">07 — Spacing Scale</div>
+    <div style="max-width: 460px;">
+      <div class="spacing-row"><span class="spacing-label">4px — micro</span><div class="spacing-bar" style="width:4px;"></div></div>
+      <div class="spacing-row"><span class="spacing-label">8px — tight</span><div class="spacing-bar" style="width:8px;"></div></div>
+      <div class="spacing-row"><span class="spacing-label">16px — base</span><div class="spacing-bar" style="width:16px;"></div></div>
+      <div class="spacing-row"><span class="spacing-label">24px — comfortable</span><div class="spacing-bar" style="width:24px;"></div></div>
+      <div class="spacing-row"><span class="spacing-label">40px — section gap</span><div class="spacing-bar" style="width:40px;"></div></div>
+      <div class="spacing-row"><span class="spacing-label">64px — breathing room</span><div class="spacing-bar" style="width:64px;"></div></div>
+      <div class="spacing-row"><span class="spacing-label">96px — section break</span><div class="spacing-bar" style="width:96px;"></div></div>
+    </div>
+  </section>
+
+  <!-- AVOID -->
+  <section>
+    <div class="section-label">08 — What to Avoid</div>
+    <div class="avoid-grid">
+      <div class="avoid-item">
+        <span class="avoid-x">✕</span>
+        <span class="avoid-text">Multiple accent colours — forest loses power the moment something else competes</span>
+      </div>
+      <div class="avoid-item">
+        <span class="avoid-x">✕</span>
+        <span class="avoid-text">Gradients, glow effects, or anything that reads "SaaS landing page 2021"</span>
+      </div>
+      <div class="avoid-item">
+        <span class="avoid-x">✕</span>
+        <span class="avoid-text">Illustrations or decorative avatars — they soften the authority signal</span>
+      </div>
+      <div class="avoid-item">
+        <span class="avoid-x">✕</span>
+        <span class="avoid-text">Bullet-list case studies — narrative paragraphs, not résumé formatting</span>
+      </div>
+      <div class="avoid-item">
+        <span class="avoid-x">✕</span>
+        <span class="avoid-text">Generic fonts: Inter, Roboto, system-ui — they read as default, not designed</span>
+      </div>
+      <div class="avoid-item">
+        <span class="avoid-x">✕</span>
+        <span class="avoid-text">More than one bold dark section — the contrast moment only works once per page</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div style="background: var(--forest); color: rgba(255,255,255,0.4); text-align: center; padding: 28px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;">
+  Leila Sayah Sparks — Portfolio Brand System v2.0
+</div>
+
+</body>
+</html>
