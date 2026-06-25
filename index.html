@@ -3,9 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leila Sayah Sparks — Group Product Manager</title>
-<meta name="description" content="Portfolio of Leila Sayah Sparks, Group Product Manager with 10 years of B2B/B2C product leadership across enterprise and startup environments.">
-<link rel="icon" type="image/png" href="favicon.png">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -19,62 +16,60 @@
   html { scroll-behavior: smooth; }
   body { margin: 0; background: #FAFAF7; -webkit-font-smoothing: antialiased; }
   @keyframes lss-expand { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-
-  /* ── MOBILE NAV (hidden by default, shown on mobile) ── */
-  #mobile-header { display: none; }
-
+  /* NOTE: selectors below target the RUNTIME-normalized inline styles
+     (React re-serializes: "prop: value", colors as rgb(), 0 -> 0px). */
   @media (max-width: 768px) {
-    /* Nav */
-    #mobile-header { display: flex !important; align-items: center; justify-content: space-between; padding: 12px 20px; width: 100%; }
-    #site-nav { display: none !important; }
+    /* Collapse every multi-column grid to a single stacked column */
+    [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
 
-    /* Hero */
-    #hero { padding: 72px 20px 48px !important; }
-    #hero-h1 { font-size: 36px !important; line-height: 1.1 !important; max-width: 100% !important; }
+    /* Masthead nav — was absolutely positioned at a fixed 1166px width.
+       Pin it to the top of the hero, full width: brand left, CTA right. */
+    [style*="width: 1166px"] { width: 100% !important; left: 0px !important; top: 0px !important; height: auto !important; padding: 16px 22px !important; }
+    /* Hide the section links on mobile, keep only the "Get in touch" CTA */
+    [style*="gap: 28px; align-items: center"] > a[style*="rgb(107, 107, 99)"] { display: none !important; }
+    [style*="gap: 28px; align-items: center"] { gap: 0px !important; }
 
-    /* About */
-    #about-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
-    #about-photo { min-height: 280px !important; }
-    #about-skills { grid-template-columns: 1fr !important; }
+    /* Hero — leave headroom for the pinned brand */
+    h1[style*="font-size: 62px"] { font-size: 33px !important; }
+    [style*="padding: 104px 40px 88px"] { padding: 74px 22px 48px !important; }
 
-    /* Stats */
-    #stats-row > div { min-width: 140px !important; padding: 0 16px !important; }
+    /* Section + card paddings tighten */
+    [style*="padding: 72px 40px"] { padding: 48px 22px !important; }
+    [style*="padding: 64px 40px 0px"] { padding: 48px 22px 0px !important; }
+    [style*="padding: 80px 40px 64px"] { padding: 56px 22px 48px !important; }
+    [style*="padding: 16px 40px 30px"] { padding: 10px 16px 22px !important; }
+    [style*="padding: 34px 38px"] { padding: 24px 20px !important; gap: 26px !important; }
+    [style*="padding: 44px 48px"] { padding: 28px 20px !important; }
 
-    /* Case card wrappers */
-    .case-outer { padding-left: 20px !important; padding-right: 20px !important; }
+    /* Meta columns (the bordered stat rails) stack BELOW the title on every
+       card — including the reversed ones — so each card reads number → title
+       → stats. Stat pairs sit side by side, divider above. */
+    [style*="border-right: 2px solid rgb(197, 213, 207)"] { order: 2 !important; border-right: none !important; text-align: left !important; padding-right: 0px !important; border-top: 2px solid rgb(197, 213, 207); padding-top: 22px !important; margin-top: 0px !important; justify-content: flex-start !important; flex-direction: row !important; flex-wrap: wrap !important; gap: 30px !important; }
+    [style*="border-left: 2px solid rgb(197, 213, 207)"] { border-left: none !important; padding-left: 0px !important; border-top: 2px solid rgb(197, 213, 207); padding-top: 22px !important; margin-top: 0px !important; flex-direction: row !important; flex-wrap: wrap !important; gap: 30px !important; }
 
-    /* Case card header grids — stack to single column */
-    .case-card { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px 20px !important; }
+    /* References masonry → single column */
+    [style*="column-count: 2"] { column-count: 1 !important; }
 
-    /* Expanded case body — reduce padding */
-    .case-body { padding: 28px 20px !important; }
-    .case-body > div:first-child { max-width: 100% !important; }
+    /* Dark "By the Numbers" stats — stacked, so give vertical rhythm and
+       turn the vertical dividers into horizontal ones */
+    [style*="min-width: 170px"] { padding: 26px 0px !important; border-right: none !important; border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important; }
+    [style*="min-width: 170px"]:last-child { border-bottom: none !important; }
+    /* Grouped stat cell (the paired +85.3% / ~$2.4M block) */
+    [style*="min-width: 200px"] { padding: 26px 0px !important; border-right: none !important; border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important; }
+    [style*="min-width: 200px"]:last-child { border-bottom: none !important; }
 
-    /* Right-side stat columns (cases 01, 03, 05) */
-    .case-stat-r { border-left: none !important; border-top: 2px solid #C5D5CF !important; padding-left: 0 !important; padding-top: 20px !important; flex-direction: row !important; flex-wrap: wrap !important; gap: 24px !important; }
+    /* Big display headings scale down */
+    [style*="font-size: 44px"] { font-size: 30px !important; }
+    [style*="font-size: 42px"] { font-size: 27px !important; }
 
-    /* Left-side stat columns in reversed cases (02, 04) — push below content */
-    .case-stat-l { order: 2 !important; border-right: none !important; border-top: 2px solid #C5D5CF !important; padding-right: 0 !important; padding-top: 20px !important; text-align: left !important; justify-content: flex-start !important; flex-direction: row !important; flex-wrap: wrap !important; gap: 24px !important; }
-    .case-content-r { order: 1 !important; }
-
-    /* Approach table rows inside expanded cases */
-    .appr-row { grid-template-columns: 1fr !important; gap: 4px !important; }
-
-    /* Artifact 2-up grid */
-    .artifact-grid { grid-template-columns: 1fr !important; }
-
-    /* AI workflows grid */
-    #workflow-grid { grid-template-columns: 1fr !important; }
-
-    /* How I work grid */
-    #approach-grid { grid-template-columns: 1fr !important; }
-
-    /* References */
-    #references-cols { column-count: 1 !important; }
-
-    /* Contact email */
-    #contact-email { font-size: 26px !important; word-break: break-all !important; }
+    /* Accessibility: lift the tiniest mono labels on small screens */
+    [style*="font-size: 9px"] { font-size: 10.5px !important; }
+    [style*="font-size: 8px"] { font-size: 10px !important; }
   }
+
+  /* Accessibility: the dark "By the Numbers" captions were ~4.39:1 (just
+     under AA 4.5:1) — lift the opacity so they pass on every viewport. */
+  [style*="rgba(255, 255, 255, 0.45)"] { color: rgba(255, 255, 255, 0.66) !important; }
 </style>
 </helmet>
 
@@ -82,29 +77,26 @@
 
   <!-- ── STICKY MASTHEAD ─────────────────────── -->
   <div style="position:sticky; top:0; z-index:50; background:rgba(250,250,247,0.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid #E8E8E2;">
-    <div id="mobile-header">
-      <a href="#top" style="text-decoration:none; font-family:'Newsreader',serif; font-weight:700; font-size:18px; letter-spacing:-0.01em; color:#1C1C1A;">Leila Sayah Sparks</a>
-      <a href="#contact" style="text-decoration:none; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#2D4A3E; border:1px solid #2D4A3E; padding:8px 14px;">Get in touch</a>
-    </div>
+    
   </div>
 
   <div id="top"></div>
 
   <!-- ── HERO ────────────────────────────────── -->
-  <div id="hero" style="max-width: 1080px; margin: 0 auto; padding: 104px 40px 88px; text-align: center; position: relative">
-    <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#6B6B63; margin-bottom:34px;">GROUP PRODUCT MANAGER · 10 YRS · B2B/B2C · ENTREPRISE/STARTUP</div>
-    <h1 id="hero-h1" style="font-family:'Newsreader',serif; font-weight:700; font-size:62px; line-height:1.04; letter-spacing:-0.02em; color:#1C1C1A; max-width:16ch; margin:0 auto 32px;">I build products — and the <em style="font-style: italic; color: rgb(45, 74, 62);">systems</em> that make Product work.</h1>
-    <p style="font-family:'Libre Franklin',sans-serif; font-weight:400; font-size:18px; line-height:1.65; color:#3D3D3A; max-width:620px; margin:0 auto 38px; text-wrap:pretty;">10 years of product leadership across B2B and B2C — both enterprise and startup. Currently GPM at Embroker, managing four PMs across four product surfaces, reporting to the COO. Known for building product functions from scratch and running experimentation programs with measurable funnel impact. Experienced across the full product lifecycle, from 0-to-1 through scale.&nbsp;</p>
+  <div style="max-width: 1080px; margin: 0 auto; padding: 104px 40px 88px; text-align: center; position: relative">
+    <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#6B6B63; margin-bottom:34px;">GROUP PRODUCT MANAGER · 10 YRS · B2B/B2C · ENTERPRISE/STARTUP</div>
+    <h1 style="font-family:'Newsreader',serif; font-weight:700; font-size:62px; line-height:1.04; letter-spacing:-0.02em; color:#1C1C1A; max-width:16ch; margin:0 auto 32px;">I build products — and the <em style="font-style: italic; color: rgb(45, 74, 62);">systems</em> that make Product work.</h1>
+    <p style="font-family:'Libre Franklin',sans-serif; font-weight:400; font-size:18px; line-height:1.65; color:#3D3D3A; max-width:620px; margin:0 auto 38px; text-wrap:pretty;">10 years of product leadership across B2B and B2C — both enterprise and startup. Currently GPM at Embroker, an AI-powered commercial insurance platform generating $100M+ in annual premium, managing four PMs across four product surfaces and reporting to the COO. Known for building product functions from scratch and running experimentation programs with measurable funnel impact. Experienced across the full product lifecycle, from 0-to-1 through scale.&nbsp;</p>
     <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
       <a href="#work" style="text-decoration:none; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:500; color:#fff; background:#2D4A3E; padding:14px 26px;">View case studies</a>
       <a href="#contact" style="text-decoration:none; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:500; color:#2D4A3E; border:1px solid #2D4A3E; padding:13px 25px;">Get in touch</a>
     </div>
-  <div id="site-nav" style="max-width: 1080px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; position: absolute; left: 29px; top: 5px; font-family: &quot;Libre Franklin&quot;, sans-serif; width: 1166px; height: 68px">
+  <div style="max-width: 1080px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; position: absolute; left: 29px; top: 5px; font-family: &quot;Libre Franklin&quot;, sans-serif; width: 1166px; height: 68px">
       <a href="#top" style="text-decoration:none; font-family:'Newsreader',serif; font-weight:700; font-size:18px; letter-spacing:-0.01em; color:#1C1C1A;">Leila Sayah Sparks</a>
       <div style="display:flex; gap:28px; align-items:center;">
         <a href="#about" style="text-decoration:none; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B63;">About</a>
         <a href="#work" style="text-decoration:none; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B63;">Work</a>
-        <a href="#ai" style="text-decoration:none; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B63;">AI</a>
+        
         <a href="#approach" style="text-decoration:none; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B63;">Approach</a>
         <a href="#references" style="text-decoration:none; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B63;">References</a>
         
@@ -116,13 +108,13 @@
   <div id="about" style="border-top:1px solid #E8E8E2;">
     <div style="max-width:1080px; margin:0 auto; padding:72px 40px;">
       <div style="text-align:center; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#2D4A3E; margin-bottom:36px;">§ 01 — About</div>
-      <div id="about-grid" style="max-width:940px; margin:0 auto; display:grid; grid-template-columns:300px 1fr; gap:52px; align-items:stretch;">
-        <div id="about-photo" style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); position:relative; overflow:hidden; min-height:340px;">
+      <div style="max-width:940px; margin:0 auto; display:grid; grid-template-columns:300px 1fr; gap:52px; align-items:stretch;">
+        <div style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); position:relative; overflow:hidden; min-height:340px;">
           <img src="images/leila-portrait.png" alt="Portrait of Leila Sayah Sparks" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 22%;">
         </div>
         <div style="display:flex; flex-direction:column; gap:26px;">
           <p style="font-family:'Newsreader',serif; font-weight:500; font-size:22px; line-height:1.5; letter-spacing:-0.01em; color:#1C1C1A; margin:0; text-wrap:pretty;">Over the last 10 years, I've led growth and CRO functions, public services, conversion programs, and product visions across B2B InsurTech, the Government of Canada, B2C telecom, and e-commerce — in both enterprise and startup environments, on products spanning 0-to-1 and 1-to-many. I currently lead the full product organization at Embroker, reporting to the COO — four PMs, four product surfaces, and the operating model that holds them together.</p>
-          <div id="about-skills" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:#E8E8E2; border:1px solid #E8E8E2;">
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:#E8E8E2; border:1px solid #E8E8E2;">
             <div style="background:#fff; padding:16px 18px;"><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; margin-bottom:8px;">Growth &amp; CRO</div><div style="font-family:'Libre Franklin',sans-serif; font-size:13px; line-height:1.5; color:#3D3D3A;">Experimentation programs and funnel optimization</div></div>
             <div style="background:#fff; padding:16px 18px;"><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; margin-bottom:8px;">Vision &amp; Strategy</div><div style="font-family:'Libre Franklin',sans-serif; font-size:13px; line-height:1.5; color:#3D3D3A;">Multi-year product visions and roadmaps</div></div>
             <div style="background:#fff; padding:16px 18px;"><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; margin-bottom:8px;">Teams &amp; Operating Models</div><div style="font-family:'Libre Franklin',sans-serif; font-size:13px; line-height:1.5; color:#3D3D3A;">Building the systems that scale a product org</div></div>
@@ -138,11 +130,14 @@
     <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#C5D5CF; margin-bottom:18px;">By the Numbers</div>
     <h2 style="font-family:'Newsreader',serif; font-weight:700; font-size:44px; letter-spacing:-0.02em; color:#fff; line-height:1; margin:0 0 14px;">Outcomes that hold.</h2>
     <p style="font-family:'Libre Franklin',sans-serif; font-weight:400; font-size:15px; color:rgba(255,255,255,0.5); max-width:46ch; margin:0 auto 48px;"><br></p>
-    <div id="stats-row" style="display:flex; justify-content:center; flex-wrap:wrap; max-width:920px; margin:0 auto;">
-      <div style="flex:1; min-width:170px; padding:0 22px; border-right:1px solid rgba(255,255,255,0.12);"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:46px; letter-spacing:-0.03em; color:#fff; line-height:1;">+85.3%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:12px;">End-to-end conversion<br>Embroker · Email Placement</div></div>
-      <div style="flex:1; min-width:170px; padding:0 22px; border-right:1px solid rgba(255,255,255,0.12);"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:46px; letter-spacing:-0.03em; color:#fff; line-height:1;">+102.5%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:12px;">Submitted applications<br>Embroker · CRO via UX optimization</div></div>
-      <div style="flex:1; min-width:170px; padding:0 22px; border-right:1px solid rgba(255,255,255,0.12);"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:46px; letter-spacing:-0.03em; color:#fff; line-height:1;">+10%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:12px;">Digital renewal share<br>TELUS Mobility</div></div>
-      <div style="flex:1; min-width:170px; padding:0 22px;"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:46px; letter-spacing:-0.03em; color:#fff; line-height:1;">+53%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:12px;">Engineering output growth from YEar 1 to 3</div></div>
+    <div style="display:flex; justify-content:center; flex-wrap:wrap; max-width:920px; margin:0 auto; align-items:center;">
+      <div style="flex:1; min-width:200px; padding:0 22px; border-right:1px solid rgba(255,255,255,0.12); display:flex; flex-direction:column; gap:28px;">
+        <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:46px; letter-spacing:-0.03em; color:#fff; line-height:1;">+85.3%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:12px;">End-to-end conversion</div></div>
+        <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:46px; letter-spacing:-0.03em; color:#fff; line-height:1;">~$2.4M</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:12px;">Influenced bound premium, H2 2025</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:6px;">Embroker · Email Placement A/B Test</div></div>
+      </div>
+      <div style="flex:1; min-width:170px; padding:0 22px; border-right:1px solid rgba(255,255,255,0.12);"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:46px; letter-spacing:-0.03em; color:#fff; line-height:1;">+102.5%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:12px;">Submitted applications<br><br><div>Embroker · CRO via UX optimization</div></div></div>
+      <div style="flex:1; min-width:170px; padding:0 22px; border-right:1px solid rgba(255,255,255,0.12);"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:46px; letter-spacing:-0.03em; color:#fff; line-height:1;">+10%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:12px;">Digital renewal share<br><br>TELUS Mobility&nbsp;<span style="letter-spacing: 0.9px;">· PERSONALIZATION TACTICS</span></div></div>
+      <div style="flex:1; min-width:170px; padding:0 22px;"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:46px; letter-spacing:-0.03em; color:#fff; line-height:1;">+53%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:12px;">Engineering output growth from YEar 1 to 3<br><br><div>EMBROKER&nbsp;<span style="letter-spacing: 0.9px;">· PROCESS OPTIMIZATION</span></div></div></div>
     </div>
   </div>
   </div>
@@ -159,8 +154,8 @@
     </div>
 
     <!-- ════ CASE 01 — Embroker Growth (featured) ════ -->
-    <div class="case-outer" style="max-width:1080px; margin:0 auto; padding:16px 40px 30px;">
-      <div style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); padding:34px 38px; display:grid; grid-template-columns:1.6fr 1fr; gap:48px; align-items:center;" class="case-card">
+    <div style="max-width:1080px; margin:0 auto; padding:16px 40px 30px;">
+      <div style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); padding:34px 38px; display:grid; grid-template-columns:1.6fr 1fr; gap:48px; align-items:center;">
         <div style="display:flex; gap:30px; align-items:flex-start;">
           <div style="font-family:'Newsreader',serif; font-weight:800; font-size:64px; line-height:0.78; letter-spacing:-0.03em; color:#C7C7BF; flex-shrink:0;">01</div>
           <div>
@@ -170,13 +165,14 @@
             <div onClick="{{ c0.toggle }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:500; color:#2D4A3E;"><span>{{ c0.label }}</span></div>
           </div>
         </div>
-        <div class="case-stat-r" style="border-left:2px solid #C5D5CF; padding-left:28px; display:flex; flex-direction:column; gap:22px;">
-          <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:36px; letter-spacing:-0.03em; color:#2D4A3E; line-height:1;">+102.5%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Submitted applications</div></div>
+        <div style="border-left:2px solid #C5D5CF; padding-left:28px; display:flex; flex-direction:column; gap:22px;">
+          <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:36px; letter-spacing:-0.03em; color:#2D4A3E; line-height:1;">+102.5%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">SUBMITTED APPLICATIONS - LAW VERTICAL</div></div>
           <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:36px; letter-spacing:-0.03em; color:#2D4A3E; line-height:1;">+85.3%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">End-to-end conversion</div></div>
+          <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:30px; letter-spacing:-0.03em; color:#2D4A3E; line-height:1;">~$2.4M</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Influenced bound premium, H2 2025</div></div>
         </div>
       </div>
       <sc-if value="{{ c0.isOpen }}" hint-placeholder-val="{{ false }}">
-        <div class="case-body" style="animation:lss-expand 0.3s ease; background:#fff; border:1px solid #E8E8E2; padding:44px 48px; margin:16px 0 8px;">
+        <div style="animation:lss-expand 0.3s ease; background:#fff; border:1px solid #E8E8E2; padding:44px 48px; margin:16px 0 8px;">
           <div style="max-width:720px;">
             <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Summary</div>
             <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 30px; text-wrap:pretty;">Stood up Embroker's first dedicated growth and CRO function — the team, the experimentation program, and the operating cadence, all from scratch.&nbsp;</p>
@@ -186,24 +182,24 @@
             <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Approach</div>
             <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 18px; text-wrap:pretty;">I built the program in four layers.</p>
             <div style="display:flex; flex-direction:column; gap:0; border-top:1px solid #E8E8E2; margin:0 0 30px;">
-              <div class="appr-row" style="display:grid; grid-template-columns:140px 1fr; gap:22px; padding:16px 0; border-bottom:1px solid #E8E8E2; align-items:start;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; padding-top:2px;">Team</div><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.7; color:#3D3D3A; margin:0; text-wrap:pretty;">A cross-functional squad around the funnel and key product surfaces, with PMs owning their own experimentation backlogs. The central function set standards and unblocked, rather than centralizing decisions.</p></div>
-              <div class="appr-row" style="display:grid; grid-template-columns:140px 1fr; gap:22px; padding:16px 0; border-bottom:1px solid #E8E8E2; align-items:start;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; padding-top:2px;">Eng capacity</div><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.7; color:#3D3D3A; margin:0; text-wrap:pretty;">An explicit Growth/BAU split with quarterly engineering rotation, so growth work didn't stall every time something unplanned hit — while still giving engineers exposure to both tracks.</p></div>
-              <div class="appr-row" style="display:grid; grid-template-columns:140px 1fr; gap:22px; padding:16px 0; border-bottom:1px solid #E8E8E2; align-items:start;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; padding-top:2px;">Infrastructure</div><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.7; color:#3D3D3A; margin:0; text-wrap:pretty;">Established the testing stack, hypothesis and write-up standards, a shared experiment repository, and a structured cadence for review and learning — built the Growth Scorecard (quarterly OKR view), the Test Card (hypothesis intake), the Learning Card (post-test synthesis), and a centralized experiment library used across product.</p></div>
-              <div class="appr-row" style="display:grid; grid-template-columns:140px 1fr; gap:22px; padding:16px 0; border-bottom:1px solid #E8E8E2; align-items:start;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; padding-top:2px;">Philosophy</div><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.7; color:#3D3D3A; margin:0; text-wrap:pretty;">With low site traffic, experimentation can't just mean A/B testing. I shaped the approach around three principles: identify where we had enough traffic to validate through testing; evaluate Bayesian vs frequentist approaches based on the question; and pair quantitative and qualitative methods where pure A/B testing wasn't viable.</p></div>
+              <div style="display:grid; grid-template-columns:140px 1fr; gap:22px; padding:16px 0; border-bottom:1px solid #E8E8E2; align-items:start;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; padding-top:2px;">Team</div><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.7; color:#3D3D3A; margin:0; text-wrap:pretty;">A cross-functional squad around the funnel and key product surfaces, with PMs owning their own experimentation backlogs. The central function set standards and unblocked, rather than centralizing decisions.</p></div>
+              <div style="display:grid; grid-template-columns:140px 1fr; gap:22px; padding:16px 0; border-bottom:1px solid #E8E8E2; align-items:start;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; padding-top:2px;">Eng capacity</div><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.7; color:#3D3D3A; margin:0; text-wrap:pretty;">An explicit Growth/BAU split with quarterly engineering rotation, so growth work didn't stall every time something unplanned hit — while still giving engineers exposure to both tracks.</p></div>
+              <div style="display:grid; grid-template-columns:140px 1fr; gap:22px; padding:16px 0; border-bottom:1px solid #E8E8E2; align-items:start;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; padding-top:2px;">Infrastructure</div><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.7; color:#3D3D3A; margin:0; text-wrap:pretty;">Established the testing stack, hypothesis and write-up standards, a shared experiment repository, and a structured cadence for review and learning — built the Growth Scorecard (quarterly OKR view), the Test Card (hypothesis intake), the Learning Card (post-test synthesis), and a centralized experiment library used across product.</p></div>
+              <div style="display:grid; grid-template-columns:140px 1fr; gap:22px; padding:16px 0; border-bottom:1px solid #E8E8E2; align-items:start;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; padding-top:2px;">Philosophy</div><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.7; color:#3D3D3A; margin:0; text-wrap:pretty;">With low site traffic, experimentation can't just mean A/B testing. I shaped the approach around three principles: identify where we had enough traffic to validate through testing; evaluate Bayesian vs frequentist approaches based on the question; and pair quantitative and qualitative methods where pure A/B testing wasn't viable.</p></div>
             </div>
             <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:6px;">Artifacts</div>
             <p style="font-family:'Libre Franklin',sans-serif; font-size:14px; line-height:1.6; color:#6B6B63; margin:0 0 16px; text-wrap:pretty;">The standards that made testing repeatable — and that outlived the team. Open any one.</p>
-            <div class="artifact-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:0 0 30px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:0 0 30px;">
               <a href="artifacts/growth-scorecard.html" target="_blank" style="text-decoration:none; display:block; background:#fff; border:1px solid #E8E8E2; overflow:hidden;" style-hover="border-color:#2D4A3E;"><div style="height:124px; overflow:hidden; border-bottom:1px solid #E8E8E2; background:#F4F2EC;"><img src="assets/artifact-scorecard.png" alt="Growth Scorecard" style="width:100%; display:block;"></div><div style="padding:12px 14px;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#2D4A3E; margin-bottom:4px;">Growth Scorecard ↗</div><div style="font-family:'Libre Franklin',sans-serif; font-size:13px; line-height:1.5; color:#6B6B63;">Quarterly OKR view — results, velocity, next-quarter focus.</div></div></a>
               <a href="assets/artifact-library.png" target="_blank" style="text-decoration:none; display:block; background:#fff; border:1px solid #E8E8E2; overflow:hidden;" style-hover="border-color:#2D4A3E;"><div style="height:124px; overflow:hidden; border-bottom:1px solid #E8E8E2; background:#F4F2EC;"><img src="assets/artifact-library.png" alt="Experiment Library" style="width:100%; display:block;"></div><div style="padding:12px 14px;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#2D4A3E; margin-bottom:4px;">Experiment Library ↗</div><div style="font-family:'Libre Franklin',sans-serif; font-size:13px; line-height:1.5; color:#6B6B63;">Centralized repository — hypothesis, KPI, status, write-up per test.</div></div></a>
               <a href="artifacts/test-card.html" target="_blank" style="text-decoration:none; display:block; background:#fff; border:1px solid #E8E8E2; overflow:hidden;" style-hover="border-color:#2D4A3E;"><div style="height:124px; overflow:hidden; border-bottom:1px solid #E8E8E2; background:#F4F2EC;"><img src="assets/artifact-testcard.png" alt="Test Card" style="width:100%; display:block;"></div><div style="padding:12px 14px;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#2D4A3E; margin-bottom:4px;">Test Card ↗</div><div style="font-family:'Libre Franklin',sans-serif; font-size:13px; line-height:1.5; color:#6B6B63;">Hypothesis intake — context, type, success criteria, sample size.</div></div></a>
               <a href="artifacts/learning-card.html" target="_blank" style="text-decoration:none; display:block; background:#fff; border:1px solid #E8E8E2; overflow:hidden;" style-hover="border-color:#2D4A3E;"><div style="height:124px; overflow:hidden; border-bottom:1px solid #E8E8E2; background:#F4F2EC;"><img src="assets/artifact-learningcard.png" alt="Learning Card" style="width:100%; display:block;"></div><div style="padding:12px 14px;"><div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#2D4A3E; margin-bottom:4px;">Learning Card ↗</div><div style="font-family:'Libre Franklin',sans-serif; font-size:13px; line-height:1.5; color:#6B6B63;">Post-test synthesis — result, insight, and next steps.</div></div></a>
             </div>
-            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Selected results</div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">KEY RESULTS</div>
             <div style="display:flex; flex-wrap:wrap; gap:2px; background:#E8E8E2; border:1px solid #E8E8E2; margin:0 0 30px;">
-              <div style="flex:1 1 130px; background:#FAFAF7; padding:18px 20px;"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:22px; color:#2D4A3E; line-height:1;">+102.5%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Law Vertical Untoggle — submissions</div></div>
-              <div style="flex:1 1 130px; background:#FAFAF7; padding:18px 20px;"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:22px; color:#2D4A3E; line-height:1;">+85.3%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Email Placement — E2E conversion</div></div>
-              <div style="flex:1 1 130px; background:#FAFAF7; padding:18px 20px;"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:22px; color:#2D4A3E; line-height:1;">+17%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">"Before You Begin" removal — submissions</div></div>
+              <div style="flex:1 1 130px; background:#FAFAF7; padding:18px 20px;"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:22px; color:#2D4A3E; line-height:1;">+102.5%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:#6B6B63; margin-top:6px;"><span style="letter-spacing: 0.72px;">SUBMISSIONS -&nbsp;<br></span>UNTOGGLE COVERAGES AB TEST</div></div>
+              <div style="flex:1 1 130px; background:#FAFAF7; padding:18px 20px;"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:22px; color:#2D4A3E; line-height:1;">+85.3%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">E2E CONVERSION</div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:22px; color:#2D4A3E; line-height:1; margin-top:14px;">~$2.4M</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Influenced bound premium, H2 2025<br><br><span style="letter-spacing: 0.72px;">EMAIL PLACEMENT AB TEST</span></div></div>
+              <div style="flex:1 1 130px; background:#FAFAF7; padding:18px 20px;"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:22px; color:#2D4A3E; line-height:1;">+17%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">submissions -<span style="letter-spacing: 0.72px;">"BEFORE YOU BEGIN" STEP REMOVAL OPTIMIZATION</span></div></div>
               <div style="flex:1 1 130px; background:#FAFAF7; padding:18px 20px;"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:22px; color:#2D4A3E; line-height:1;">83.3%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Experimentation velocity vs 70% target</div></div>
               <div style="flex:1 1 130px; background:#FAFAF7; padding:18px 20px;"><div style="font-family:'Newsreader',serif; font-weight:800; font-size:22px; color:#2D4A3E; line-height:1;">+48%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Signal accuracy — GrowthBook / Snowflake</div></div>
             </div>
@@ -224,65 +220,12 @@
       </sc-if>
     </div>
 
-    <!-- ════ CASE 02 — Protego (reversed) ════ -->
-    <div class="case-outer" style="max-width:1080px; margin:0 auto; padding:16px 40px 30px;">
-      <div style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); padding:34px 38px; display:grid; grid-template-columns:1fr 1.6fr; gap:48px; align-items:center;" class="case-card">
-        <div class="case-stat-l" style="text-align:right; border-right:2px solid #C5D5CF; padding-right:28px;">
-          <div style="font-family:'Newsreader',serif; font-weight:700; font-size:26px; letter-spacing:-0.01em; color:#2D4A3E; line-height:1.15;">Offer extended (declined)</div>
-          <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:8px;">Head of Product role</div>
-        </div>
-        <div class="case-content-r" style="display:flex; gap:30px; align-items:flex-start;">
-          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:64px; line-height:0.78; letter-spacing:-0.03em; color:#C7C7BF; flex-shrink:0;">02</div>
-          <div>
-            <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B63; margin-bottom:11px;">Protego · UAE B2C InsurTech (RAKBank-backed)</div>
-            <h2 style="font-family:'Newsreader',serif; font-weight:700; font-size:25px; line-height:1.1; letter-spacing:-0.02em; color:#1C1C1A; margin:0 0 12px; max-width:24ch;">A 3-Year Product Vision for a Bank-Backed Digital Insurance Brand</h2>
-            
-            <div onClick="{{ c1.toggle }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:500; color:#2D4A3E;"><span>{{ c1.label }}</span></div>
-          </div>
-        </div>
-      </div>
-      <sc-if value="{{ c1.isOpen }}" hint-placeholder-val="{{ false }}">
-        <div class="case-body" style="animation:lss-expand 0.3s ease; background:#fff; border:1px solid #E8E8E2; padding:44px 48px; margin:16px 0 8px;">
-          <div style="max-width:720px;">
-            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Summary</div>
-            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 30px; text-wrap:pretty;">A 3-year product vision and 18-month roadmap for Protego, a UAE digital insurance brand backed by RAKBank — making the case for a deliberate shift from price-aggregator to trust-led "insurance companion." Built in under a week as a Head of Product interview case study. Resulted in an offer.</p>
-            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Context &amp; the problem</div>
-            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 14px; text-wrap:pretty;">Protego operates in a market dominated by aggregators like Policybazaar and YallaCompare. The brief: define a 3-year vision and a 12–18 month roadmap. The constraint: no internal data, less than a week.</p>
-            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 30px; text-wrap:pretty;">The aggregator model has structural limits — price competition, thin margins, low loyalty. The real strategic question wasn't <em style="font-style:italic;">how to be a better aggregator</em>; it was whether the aggregator alone was enough, or whether Protego's bank backing made something more ambitious possible.</p>
-            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Approach</div>
-            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 14px; text-wrap:pretty;">I framed the choice as: <strong style="font-weight:600; color:#1C1C1A;">Path A</strong> — stay aggregator-only, compete on price, accept thin margins; or <strong style="font-weight:600; color:#1C1C1A;">Path B</strong> — build a trusted digital insurance companion <em style="font-style:italic;">on top of</em> the aggregator, owning the relationship across compare, buy, manage, and claim.</p>
-            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 30px; text-wrap:pretty;">I made the case for Path B on three advantages aggregator-only competitors can't replicate: RAKBank's distribution and trust, an ICP that values confidence over cheapest price, and the structural unwinnability of competing on scale alone. From there: a 3-year horizon (Foundations → Lifecycle Value → Ecosystem Scale) and an 18-month roadmap with a Month-12 Product Market Fit checkpoint.</p>
-            
-            
-            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Outcome &amp; reflection</div>
-            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 14px; text-wrap:pretty;">Offer extended for the Head of Product role. The hire was blocked by external geopolitical events affecting Dubai-based hiring — not by fit or performance.</p>
-            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">WHAT I'D RECOMMEND DOING NEXT, IN ROLE</div><p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 26px; text-wrap:pretty;">If I were stepping into this role, two priorities early on:<br>- Customer interviews to validate the ICP. I built the strategy on secondary research and reasoning. Real conversations with customers would either sharpen or reshape the lens. <br><br>-&nbsp; Model the unit economics. The case for shifting from acquisition-led to retention-led growth is sharper with an LTV/CAC sketch under a few scenarios — and that’s the language that lands with the board.</p>
-            <div onClick="{{ c1.toggle }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#6B6B63;">Close case study ✕</div>
-          </div>
-          <div style="margin-top:8px;">
-            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:14px; flex-wrap:wrap;">
-              <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E;">The deck · 25 slides</div>
-              <a href="uploads/protego_deck.pptx" download="Protego - Product Vision (Leila Sayah Sparks).pptx" style="text-decoration:none; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; border:1px solid #C5D5CF; padding:8px 14px;">Download .pptx ↓</a>
-            </div>
-            <div style="position:relative; background:#1C1C1A; border:1px solid #E8E8E2; line-height:0;">
-              {{ deck.bigImg }}
-              <div onClick="{{ deck.prev }}" style="position:absolute; left:0; top:0; height:100%; width:18%; cursor:pointer; display:flex; align-items:center; padding-left:12px;"><span style="display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; background:rgba(28,28,26,0.55); color:#fff; font-size:16px; backdrop-filter:blur(2px);">‹</span></div>
-              <div onClick="{{ deck.next }}" style="position:absolute; right:0; top:0; height:100%; width:18%; cursor:pointer; display:flex; align-items:center; justify-content:flex-end; padding-right:12px;"><span style="display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; background:rgba(28,28,26,0.55); color:#fff; font-size:16px; backdrop-filter:blur(2px);">›</span></div>
-              <div style="position:absolute; right:12px; bottom:12px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; color:#fff; background:rgba(28,28,26,0.6); padding:5px 10px; backdrop-filter:blur(2px);">{{ deck.curNum }} / {{ deck.total }}</div>
-            </div>
-            <div style="display:flex; gap:6px; overflow-x:auto; padding:12px 2px 4px; margin-top:2px;">
-              {{ deck.thumbRail }}
-            </div>
-          </div>
-        </div>
-      </sc-if>
-    </div>
 
-    <!-- ════ CASE 03 — CDS ════ -->
-    <div class="case-outer" style="max-width:1080px; margin:0 auto; padding:16px 40px 30px;">
-      <div style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); padding:34px 38px; display:grid; grid-template-columns:1.6fr 1fr; gap:48px; align-items:center;" class="case-card">
+    <!-- ════ CASE 02 — CDS ════ -->
+    <div style="max-width:1080px; margin:0 auto; padding:16px 40px 30px;">
+      <div style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); padding:34px 38px; display:grid; grid-template-columns:1.6fr 1fr; gap:48px; align-items:center;">
         <div style="display:flex; gap:30px; align-items:flex-start;">
-          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:64px; line-height:0.78; letter-spacing:-0.03em; color:#C7C7BF; flex-shrink:0;">03</div>
+          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:64px; line-height:0.78; letter-spacing:-0.03em; color:#C7C7BF; flex-shrink:0;">02</div>
           <div>
             <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B63; margin-bottom:11px;">Canadian Digital Service · Government of Canada</div>
             <h2 style="font-family:'Newsreader',serif; font-weight:700; font-size:25px; line-height:1.1; letter-spacing:-0.02em; color:#1C1C1A; margin:0 0 12px; max-width:24ch;">Leading at Two Scales: A National Service &amp; a Cross-Government Consulting Squad</h2>
@@ -290,13 +233,13 @@
             <div onClick="{{ c2.toggle }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:500; color:#2D4A3E;"><span>{{ c2.label }}</span></div>
           </div>
         </div>
-        <div class="case-stat-r" style="border-left:2px solid #C5D5CF; padding-left:28px; display:flex; gap:32px;">
+        <div style="border-left:2px solid #C5D5CF; padding-left:28px; display:flex; gap:32px;">
           <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:36px; letter-spacing:-0.03em; color:#2D4A3E; line-height:1;">3</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Product teams led</div></div>
           <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:36px; letter-spacing:-0.03em; color:#2D4A3E; line-height:1;">12+</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Concurrent engagements</div></div>
         </div>
       </div>
       <sc-if value="{{ c2.isOpen }}" hint-placeholder-val="{{ false }}">
-        <div class="case-body" style="animation:lss-expand 0.3s ease; background:#fff; border:1px solid #E8E8E2; padding:44px 48px; margin:16px 0 8px;">
+        <div style="animation:lss-expand 0.3s ease; background:#fff; border:1px solid #E8E8E2; padding:44px 48px; margin:16px 0 8px;">
           <div style="max-width:720px;">
             <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Summary</div>
             <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 30px; text-wrap:pretty;">Led product work across two simultaneous mandates: Product Lead for COVID Alert — the Government of Canada's pandemic exposure-notification service — and Consulting Team Lead for a cross-government advisory squad helping departments without internal digital capacity. One was leading a high-stakes service through a difficult transition; the other was building the operating systems that let a small squad scale across the federal government.</p>
@@ -314,15 +257,15 @@
       </sc-if>
     </div>
 
-    <!-- ════ CASE 04 — TELUS (reversed) ════ -->
-    <div class="case-outer" style="max-width:1080px; margin:0 auto; padding:16px 40px 30px;">
-      <div style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); padding:34px 38px; display:grid; grid-template-columns:1fr 1.6fr; gap:48px; align-items:center;" class="case-card">
-        <div class="case-stat-l" style="border-right:2px solid #C5D5CF; padding-right:28px; display:flex; gap:28px; justify-content:flex-end; text-align:right;">
+    <!-- ════ CASE 03 — TELUS (reversed) ════ -->
+    <div style="max-width:1080px; margin:0 auto; padding:16px 40px 30px;">
+      <div style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); padding:34px 38px; display:grid; grid-template-columns:1fr 1.6fr; gap:48px; align-items:center;">
+        <div style="border-right:2px solid #C5D5CF; padding-right:28px; display:flex; gap:28px; justify-content:flex-end; text-align:right;">
           <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:36px; letter-spacing:-0.03em; color:#2D4A3E; line-height:1;">+10%</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Digital renewal share</div></div>
           <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:36px; letter-spacing:-0.03em; color:#2D4A3E; line-height:1;">15→1</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Landing pages</div></div>
         </div>
-        <div class="case-content-r" style="display:flex; gap:30px; align-items:flex-start;">
-          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:64px; line-height:0.78; letter-spacing:-0.03em; color:#C7C7BF; flex-shrink:0;">04</div>
+        <div style="display:flex; gap:30px; align-items:flex-start;">
+          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:64px; line-height:0.78; letter-spacing:-0.03em; color:#C7C7BF; flex-shrink:0;">03</div>
           <div>
             <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B63; margin-bottom:11px;">TELUS Digital · Canada B2C Telecom</div>
             <h2 style="font-family:'Newsreader',serif; font-weight:700; font-size:25px; line-height:1.1; letter-spacing:-0.02em; color:#1C1C1A; margin:0 0 12px; max-width:24ch;">Personalizing the Renewal Journey to Drive a 10% Lift in Digital Renewal Share</h2>
@@ -332,7 +275,7 @@
         </div>
       </div>
       <sc-if value="{{ c3.isOpen }}" hint-placeholder-val="{{ false }}">
-        <div class="case-body" style="animation:lss-expand 0.3s ease; background:#fff; border:1px solid #E8E8E2; padding:44px 48px; margin:16px 0 8px;">
+        <div style="animation:lss-expand 0.3s ease; background:#fff; border:1px solid #E8E8E2; padding:44px 48px; margin:16px 0 8px;">
           <div style="max-width:720px;">
             <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Summary</div>
             <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 30px; text-wrap:pretty;">Led TELUS's first Mobility CRO team and redesigned the digital renewal journey based on how customers actually behaved, not how the business assumed they did — consolidating fifteen segment-specific landing pages into a single personalized experience, then extending that personalization across every touchpoint a renewing customer encounters. Result: a 10% increase in digital renewal share within the first year.</p>
@@ -363,11 +306,11 @@
       </sc-if>
     </div>
 
-    <!-- ════ CASE 05 — AI Ops (dark) ════ -->
-    <div id="ai" class="case-outer" style="max-width:1080px; margin:0 auto; padding:16px 40px 30px;">
-      <div style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); padding:34px 38px; display:grid; grid-template-columns:1.6fr 1fr; gap:48px; align-items:center;" class="case-card">
+    <!-- ════ CASE 04 — AI Ops (dark) ════ -->
+    <div id="ai" style="max-width:1080px; margin:0 auto; padding:16px 40px 30px;">
+      <div style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); padding:34px 38px; display:grid; grid-template-columns:1.6fr 1fr; gap:48px; align-items:center;">
         <div style="display:flex; gap:30px; align-items:flex-start;">
-          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:64px; line-height:0.78; letter-spacing:-0.03em; color:#C7C7BF; flex-shrink:0;">05</div>
+          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:64px; line-height:0.78; letter-spacing:-0.03em; color:#C7C7BF; flex-shrink:0;">04</div>
           <div>
             <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B63; margin-bottom:11px;">Embroker · AI Ops · Modern Craft</div>
             <h2 style="font-family:'Newsreader',serif; font-weight:700; font-size:25px; line-height:1.1; letter-spacing:-0.02em; color:#1C1C1A; margin:0 0 12px; max-width:24ch;">Designing an AI-Augmented PM Operating Model</h2>
@@ -375,13 +318,13 @@
             <div onClick="{{ c4.toggle }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:500; color:#2D4A3E;"><span>{{ c4.label }}</span></div>
           </div>
         </div>
-        <div class="case-stat-r" style="border-left:2px solid #C5D5CF; padding-left:28px; display:flex; flex-direction:column; gap:20px;">
+        <div style="border-left:2px solid #C5D5CF; padding-left:28px; display:flex; flex-direction:column; gap:20px;">
           <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:36px; letter-spacing:-0.03em; color:#2D4A3E; line-height:1;">4</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">Workflows designed &amp; deployed</div></div>
           <div><div style="font-family:'Newsreader',serif; font-weight:800; font-size:30px; letter-spacing:-0.03em; color:#2D4A3E; line-height:1;">days → hours</div><div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:6px;">On the first proven workflow</div></div>
         </div>
       </div>
       <sc-if value="{{ c4.isOpen }}" hint-placeholder-val="{{ false }}">
-        <div class="case-body" style="animation:lss-expand 0.3s ease; background:#fff; border:1px solid #E8E8E2; padding:44px 48px; margin:16px 0 8px;">
+        <div style="animation:lss-expand 0.3s ease; background:#fff; border:1px solid #E8E8E2; padding:44px 48px; margin:16px 0 8px;">
           <div style="max-width:720px;">
             <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Summary</div>
             <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 30px; text-wrap:pretty;">Re-architected how PM work gets done at Embroker by mapping the lifecycle gaps a lean PM team faces, then designing AI-augmented workflows to close them. I test each workflow on my own work first, with the intent to scale across the team. The result is different unit economics for PM work — strategy, design, documentation, and execution cycles that used to take days now take hours.</p>
@@ -403,7 +346,7 @@
         
         
         <span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; display:flex; align-items:center; gap:8px;"><span style="width:11px; height:11px; border-radius:50%; border:1.5px solid #2D4A3E; background:transparent;"></span>In build</span><span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; display:flex; align-items:center; gap:8px;"><span style="width:11px; height:11px; border-radius:50%; background:#2D4A3E;"></span>Live</span><span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; display:flex; align-items:center; gap:8px;"><span style="width:11px; height:11px; border-radius:50%; background:#9DB6AC;"></span>Partial</span>
-      </div><div id="workflow-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:#E8E8E2; border:1px solid #E8E8E2;">
+      </div><div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:#E8E8E2; border:1px solid #E8E8E2;">
 
         <!-- WF 01 -->
         <div style="background:#fff; padding:32px 30px; display:flex; flex-direction:column;">
@@ -469,6 +412,62 @@
         </div>
       </sc-if>
     </div>
+    <!-- ════ CASE 05 — Protego (reversed) ════ -->
+    <div style="max-width:1080px; margin:0 auto; padding:16px 40px 30px;">
+      <div style="background:#fff; border:1px solid #E8E8E2; border-top:2px solid #2D4A3E; box-shadow:0 1px 4px rgba(28,28,26,0.06); padding:34px 38px; display:grid; grid-template-columns:1fr 1.6fr; gap:48px; align-items:center;">
+        <div style="text-align:right; border-right:2px solid #C5D5CF; padding-right:28px;">
+          <div style="font-family:'Newsreader',serif; font-weight:700; font-size:26px; letter-spacing:-0.01em; color:#2D4A3E; line-height:1.15;">Offer extended (declined)</div>
+          <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6B6B63; margin-top:8px;">Head of Product role</div>
+        </div>
+        <div style="display:flex; gap:30px; align-items:flex-start;">
+          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:64px; line-height:0.78; letter-spacing:-0.03em; color:#C7C7BF; flex-shrink:0;">05</div>
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B63; margin-bottom:11px;">Protego · UAE B2C InsurTech (RAKBank-backed)</div>
+            <span style="display:inline-block; font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:#6E5E42; background:#F5EFE4; border:1px solid #E0D5C4; padding:4px 10px; margin-bottom:11px;">Strategy Exercise</span>
+            <h2 style="font-family:'Newsreader',serif; font-weight:700; font-size:25px; line-height:1.1; letter-spacing:-0.02em; color:#1C1C1A; margin:0 0 12px; max-width:24ch;">A 3-Year Product Vision for a Bank-Backed Digital Insurance Brand</h2>
+            
+            <div onClick="{{ c1.toggle }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:500; color:#2D4A3E;"><span>{{ c1.label }}</span></div>
+          </div>
+        </div>
+      </div>
+      <sc-if value="{{ c1.isOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:lss-expand 0.3s ease; background:#fff; border:1px solid #E8E8E2; padding:44px 48px; margin:16px 0 8px;">
+          <div style="max-width:720px;">
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Summary</div>
+            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 30px; text-wrap:pretty;">A strategy exercise built in under a week for a Head of Product interview — included here as a window into how I structure ambiguous, zero-data problems.
+
+A 3-year product vision and 18-month roadmap for Protego, a UAE digital insurance brand backed by RAKBank — making the case for a deliberate shift from price-aggregator to trust-led "insurance companion." Built in under a week as a Head of Product interview case study. Resulted in an offer.</p>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Context &amp; the problem</div>
+            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 14px; text-wrap:pretty;">Protego operates in a market dominated by aggregators like Policybazaar and YallaCompare. The brief: define a 3-year vision and a 12–18 month roadmap. The constraint: no internal data, less than a week.</p>
+            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 30px; text-wrap:pretty;">The aggregator model has structural limits — price competition, thin margins, low loyalty. The real strategic question wasn't <em style="font-style:italic;">how to be a better aggregator</em>; it was whether the aggregator alone was enough, or whether Protego's bank backing made something more ambitious possible.</p>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Approach</div>
+            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 14px; text-wrap:pretty;">I framed the choice as: <strong style="font-weight:600; color:#1C1C1A;">Path A</strong> — stay aggregator-only, compete on price, accept thin margins; or <strong style="font-weight:600; color:#1C1C1A;">Path B</strong> — build a trusted digital insurance companion <em style="font-style:italic;">on top of</em> the aggregator, owning the relationship across compare, buy, manage, and claim.</p>
+            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 30px; text-wrap:pretty;">I made the case for Path B on three advantages aggregator-only competitors can't replicate: RAKBank's distribution and trust, an ICP that values confidence over cheapest price, and the structural unwinnability of competing on scale alone. From there: a 3-year horizon (Foundations → Lifecycle Value → Ecosystem Scale) and an 18-month roadmap with a Month-12 Product Market Fit checkpoint.</p>
+            
+            
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">Outcome &amp; reflection</div>
+            <p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 14px; text-wrap:pretty;">Offer extended for the Head of Product role. The hire was blocked by external geopolitical events affecting Dubai-based hiring — not by fit or performance.</p>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E; margin-bottom:12px;">WHAT I'D RECOMMEND DOING NEXT, IN ROLE</div><p style="font-family:'Libre Franklin',sans-serif; font-size:16px; line-height:1.75; color:#3D3D3A; margin:0 0 26px; text-wrap:pretty;">If I were stepping into this role, two priorities early on:<br>- Customer interviews to validate the ICP. I built the strategy on secondary research and reasoning. Real conversations with customers would either sharpen or reshape the lens. <br><br>-&nbsp; Model the unit economics. The case for shifting from acquisition-led to retention-led growth is sharper with an LTV/CAC sketch under a few scenarios — and that’s the language that lands with the board.</p>
+            <div onClick="{{ c1.toggle }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#6B6B63;">Close case study ✕</div>
+          </div>
+          <div style="margin-top:8px;">
+            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:14px; flex-wrap:wrap;">
+              <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2D4A3E;">The deck · 25 slides</div>
+              <a href="uploads/protego_deck.pptx" download="Protego - Product Vision (Leila Sayah Sparks).pptx" style="text-decoration:none; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#2D4A3E; border:1px solid #C5D5CF; padding:8px 14px;">Download .pptx ↓</a>
+            </div>
+            <div style="position:relative; background:#1C1C1A; border:1px solid #E8E8E2; line-height:0;">
+              {{ deck.bigImg }}
+              <div onClick="{{ deck.prev }}" style="position:absolute; left:0; top:0; height:100%; width:18%; cursor:pointer; display:flex; align-items:center; padding-left:12px;"><span style="display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; background:rgba(28,28,26,0.55); color:#fff; font-size:16px; backdrop-filter:blur(2px);">‹</span></div>
+              <div onClick="{{ deck.next }}" style="position:absolute; right:0; top:0; height:100%; width:18%; cursor:pointer; display:flex; align-items:center; justify-content:flex-end; padding-right:12px;"><span style="display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; background:rgba(28,28,26,0.55); color:#fff; font-size:16px; backdrop-filter:blur(2px);">›</span></div>
+              <div style="position:absolute; right:12px; bottom:12px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; color:#fff; background:rgba(28,28,26,0.6); padding:5px 10px; backdrop-filter:blur(2px);">{{ deck.curNum }} / {{ deck.total }}</div>
+            </div>
+            <div style="display:flex; gap:6px; overflow-x:auto; padding:12px 2px 4px; margin-top:2px;">
+              {{ deck.thumbRail }}
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </div>
   </div>
 
   <!-- ── BOLD MOMENT — BY THE NUMBERS ────────── -->
@@ -478,29 +477,23 @@
   <div id="approach" style="border-top:1px solid #E8E8E2;">
     <div style="max-width:1080px; margin:0 auto; padding:72px 40px;">
       <div style="text-align:center; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#2D4A3E; margin-bottom:40px;">§ 03 — HOW I WORK</div>
-      <div id="approach-grid" style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:2px; background:#E8E8E2; border:1px solid #E8E8E2;">
+      <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:2px; background:#E8E8E2; border:1px solid #E8E8E2;">
         <div style="background:#fff; padding:34px 34px; display:flex; flex-direction:column; gap:14px;">
           <div style="font-family:'Newsreader',serif; font-weight:800; font-size:34px; color:#C7C7BF; line-height:1;">01</div>
           <h3 style="font-family:'Newsreader',serif; font-weight:700; font-size:22px; line-height:1.2; letter-spacing:-0.01em; color:#1C1C1A; margin:0;">Product work starts with the problem, not the solution.</h3><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.68; color:#3D3D3A; margin:0; text-wrap:pretty;">Before anything ships, I push the team to align on three things: what problem we're actually solving, what success looks like through both a user lens and a business lens, and how we'll know the solution moved the outcome we cared about. At the GPM level, this matters more than feature velocity — because the roadmap directly shapes P&amp;L. Prioritization and sequencing decisions feed revenue, retention, and cost. Treating the roadmap as a delivery plan rather than a financial decision is one of the most common gaps I see in product work.</p>
         </div>
+
         <div style="background:#fff; padding:34px 34px; display:flex; flex-direction:column; gap:14px;">
           <div style="font-family:'Newsreader',serif; font-weight:800; font-size:34px; color:#C7C7BF; line-height:1;">02</div>
-          <h3 style="font-family:'Newsreader',serif; font-weight:700; font-size:22px; line-height:1.2; letter-spacing:-0.01em; color:#1C1C1A; margin:0;">Analytical rigor and design principles aren't separate disciplines — they're how I make product decisions.</h3><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.68; color:#3D3D3A; margin:0; text-wrap:pretty;">Every product call I make sits on top of two things. First: data I've gone looking for — funnel cuts, cohort behavior, qualitative signal triangulated against quantitative. Second: design principles I've internalized — jobs-to-be-done, journey mapping, information hierarchy, behavioral economics. The combination is how you avoid the two most common PM failure modes: building on instinct alone, or building on data without understanding what the data is actually saying about user behavior.</p>
-        </div>
-        <div style="background:#fff; padding:34px 34px; display:flex; flex-direction:column; gap:14px;">
-          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:34px; color:#C7C7BF; line-height:1;">03</div>
           <h3 style="font-family:'Newsreader',serif; font-weight:700; font-size:22px; line-height:1.2; letter-spacing:-0.01em; color:#1C1C1A; margin:0;">I read the org before I optimize the product — and I know when the org needs to change.</h3><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.68; color:#3D3D3A; margin:0; text-wrap:pretty;">Most PM work happens inside organizational reality — capacity, culture, politics, priorities. I treat that reality as an input to strategy, not friction to push past mindlessly. But adapting isn't the same as accepting. When the constraint is in the way of the right outcome, I advocate for changing it — clearly, with evidence, and with a path forward.&nbsp;</p>
         </div>
         <div style="background:#fff; padding:34px 34px; display:flex; flex-direction:column; gap:14px;">
-          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:34px; color:#C7C7BF; line-height:1;">04</div>
+          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:34px; color:#C7C7BF; line-height:1;">03</div>
           <h3 style="font-family:'Newsreader',serif; font-weight:700; font-size:22px; line-height:1.2; letter-spacing:-0.01em; color:#1C1C1A; margin:0;">I build systems, not just outputs.</h3><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.68; color:#3D3D3A; margin:0; text-wrap:pretty;">A feature ships once. A framework, an operating model, an experimentation program — those compound. The most leveraged PM work I've done has been building the structures that let other people do their best work, and I think about every role through that lens.</p>
         </div>
+
         <div style="background:#fff; padding:34px 34px; display:flex; flex-direction:column; gap:14px;">
-          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:34px; color:#C7C7BF; line-height:1;">05</div>
-          <h3 style="font-family:'Newsreader',serif; font-weight:700; font-size:22px; line-height:1.2; letter-spacing:-0.01em; color:#1C1C1A; margin:0;">Empathy is a prioritization tool, not a soft skill.</h3><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.68; color:#3D3D3A; margin:0; text-wrap:pretty;">When I actually understand what each stakeholder is carrying — what they're measured on, what's making their job hard — I make better calls about what matters and what can wait. Empathy isn't kindness; it's a way of building the third view that lets you decide well.</p>
-        </div>
-        <div style="background:#fff; padding:34px 34px; display:flex; flex-direction:column; gap:14px;">
-          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:34px; color:#C7C7BF; line-height:1;">06</div>
+          <div style="font-family:'Newsreader',serif; font-weight:800; font-size:34px; color:#C7C7BF; line-height:1;">04</div>
           <h3 style="font-family:'Newsreader',serif; font-weight:700; font-size:22px; line-height:1.2; letter-spacing:-0.01em; color:#1C1C1A; margin:0;">AI changes the unit economics of PM work, not the judgment.</h3><p style="font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.68; color:#3D3D3A; margin:0; text-wrap:pretty;">I use AI to compress drafting, structuring, and synthesis — and to keep PM capacity returned to the work that requires human judgment: strategy, prioritization, and stakeholder reading. If AI starts making the calls, you've over-rotated.</p>
         </div>
       </div>
@@ -514,7 +507,7 @@
       <div style="text-align:center; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#2D4A3E; margin-bottom:14px;">§ 04 — REFERENCES</div>
       <p style="text-align:center; font-family:'Newsreader',serif; font-weight:500; font-style:italic; font-size:21px; line-height:1.4; letter-spacing:-0.01em; color:#1C1C1A; max-width:30ch; margin:0 auto 8px;">What managers, peers, and reports say.</p>
       <p style="text-align:center; font-family:'Libre Franklin',sans-serif; font-size:13px; color:#6B6B63; margin:0 auto 44px;">Recommendations from LinkedIn&nbsp;</p>
-      <div id="references-cols" style="column-count:2; column-gap:24px;">
+      <div style="column-count:2; column-gap:24px;">
         <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="6">
           <div style="break-inside:avoid; -webkit-column-break-inside:avoid; display:inline-block; width:100%; box-sizing:border-box; background:#fff; border:1px solid #E8E8E2; padding:30px 32px 26px; margin:0 0 24px; vertical-align:top;">
             <div style="font-family:'Newsreader',serif; font-weight:800; font-size:52px; line-height:0.5; color:#C5D5CF; height:26px;">“</div>
@@ -542,9 +535,9 @@
   <div id="contact" style="background:#16211D;">
     <div style="max-width:1080px; margin:0 auto; padding:80px 40px 64px; text-align:center;">
       <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#C5D5CF; margin-bottom:22px;">OPEN TO PRINCIPAL PM · GPM · DIRECTOR OF PRODUCT</div>
-      <a id="contact-email" href="mailto:leisayah@gmail.com" style="text-decoration:none; font-family:'Newsreader',serif; font-weight:700; font-size:42px; letter-spacing:-0.02em; color:#fff; line-height:1.05; display:inline-block; margin-bottom:30px;">leisayah@gmail.com</a>
+      <a href="mailto:leisayah@gmail.com" style="text-decoration:none; font-family:'Newsreader',serif; font-weight:700; font-size:42px; letter-spacing:-0.02em; color:#fff; line-height:1.05; display:inline-block; margin-bottom:30px;">leisayah@gmail.com</a>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:44px;">
-        <a href="files/Leila Sayah Sparks - Resume 2026.docx" download="Leila Sayah Sparks - Resume 2026.docx" style="text-decoration:none; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:500; color:#16211D; background:#fff; padding:13px 24px;">Download résumé ↓</a>
+        <a href="uploads/Leila_Sayah_Sparks_Resume_2026-e0670ec8.docx" download="Leila Sayah Sparks - Resume 2026.docx" style="text-decoration:none; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:500; color:#16211D; background:#fff; padding:13px 24px;">Download résumé ↓</a>
         <a href="https://linkedin.com/in/leila-sayah-3707552a" style="text-decoration:none; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:500; color:#fff; border:1px solid rgba(255,255,255,0.4); padding:12px 23px;">LinkedIn ↗</a>
       </div>
       <div style="display:flex; gap:36px; justify-content:center; flex-wrap:wrap; padding-top:32px; border-top:1px solid rgba(255,255,255,0.12);">
